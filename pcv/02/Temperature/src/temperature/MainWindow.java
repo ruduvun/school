@@ -5,18 +5,19 @@
  */
 package temperature;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author student
  */
-public class MainWindow extends javax.swing.JFrame {
+public class mainWindow extends javax.swing.JFrame {
 
     /**
-     * Creates new form MainWindow
+     * Creates new form mainWindow
      */
-    public MainWindow() {
+    public mainWindow() {
         initComponents();
     }
 
@@ -31,7 +32,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         btnClose = new javax.swing.JButton();
         btnAbout = new javax.swing.JButton();
-        jSlider1 = new javax.swing.JSlider();
+        slider = new javax.swing.JSlider();
+        inputC = new javax.swing.JTextField();
+        inputF = new javax.swing.JTextField();
+        colorPanel = new javax.swing.JPanel();
+        inputK = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,58 +47,146 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        btnAbout.setText("O programu");
+        btnAbout.setText("Sebedestrukce");
         btnAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAboutActionPerformed(evt);
             }
         });
 
-        jSlider1.setMajorTickSpacing(10);
-        jSlider1.setMaximum(50);
-        jSlider1.setMinimum(-50);
-        jSlider1.setMinorTickSpacing(1);
-        jSlider1.setPaintLabels(true);
-        jSlider1.setPaintTicks(true);
-        jSlider1.setValue(0);
+        slider.setMajorTickSpacing(10);
+        slider.setMaximum(50);
+        slider.setMinimum(-50);
+        slider.setMinorTickSpacing(1);
+        slider.setPaintLabels(true);
+        slider.setPaintTicks(true);
+        slider.setSnapToTicks(true);
+        slider.setValue(0);
+        slider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderStateChanged(evt);
+            }
+        });
+
+        inputC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        inputC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputCActionPerformed(evt);
+            }
+        });
+        inputC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                inputCKeyReleased(evt);
+            }
+        });
+
+        inputF.setEditable(false);
+        inputF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        javax.swing.GroupLayout colorPanelLayout = new javax.swing.GroupLayout(colorPanel);
+        colorPanel.setLayout(colorPanelLayout);
+        colorPanelLayout.setHorizontalGroup(
+            colorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        colorPanelLayout.setVerticalGroup(
+            colorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 13, Short.MAX_VALUE)
+        );
+
+        inputK.setEditable(false);
+        inputK.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(btnClose)
-                .addGap(59, 59, 59)
-                .addComponent(btnAbout)
-                .addContainerGap(80, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnClose)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnAbout)
+                                .addGap(109, 109, 109))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(slider, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(colorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(inputC, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(inputF, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(inputK, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
+                .addComponent(colorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputC, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputF, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputK, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(slider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClose)
                     .addComponent(btnAbout))
-                .addGap(42, 42, 42))
+                .addGap(36, 36, 36))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        dispose(); //Destroy the JFrame object
+        dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
-        JOptionPane.showMessageDialog(null, "Autor: Radovan Kavka");
+        JOptionPane.showMessageDialog(this,"Self-destruction has commenced. This personal computer is going to destroy itself in 10 seconds. Please proceed to the nearest exit. "
+                + "Have a nice day.");
     }//GEN-LAST:event_btnAboutActionPerformed
+
+    private void inputCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputCActionPerformed
+
+    private void sliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderStateChanged
+        inputC.setText(String.valueOf(slider.getValue())+" °C");
+        int celsius = slider.getValue();
+        inputF.setText(String.valueOf(celsius*9/5+32)+" °F");
+        inputK.setText(String.valueOf(celsius+273)+ " °K");
+        int color = celsius+50;
+        if (color > 50){
+            color -= 50;
+            int r = 255 - (int)(color * (float) 255/50);
+            colorPanel.setBackground(new Color(255,r,r));
+        }
+        else{
+            int b = (int)(color * (float) 255/50);
+            colorPanel.setBackground(new Color(b,b,255));
+        }
+    }//GEN-LAST:event_sliderStateChanged
+
+    private void inputCKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCKeyReleased
+        String typed = inputC.getText();
+        slider.setValue(0);
+        if(typed.matches("\\d+") && !typed.matches("-\\d+") || typed.length() > 3){
+            return;
+        }
+        slider.setValue(Integer.parseInt(typed));
+    }//GEN-LAST:event_inputCKeyReleased
 
     /**
      * @param args the command line arguments
@@ -112,20 +205,20 @@ public class MainWindow extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainWindow().setVisible(true);
+                new mainWindow().setVisible(true);
             }
         });
     }
@@ -133,6 +226,10 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbout;
     private javax.swing.JButton btnClose;
-    private javax.swing.JSlider jSlider1;
+    private javax.swing.JPanel colorPanel;
+    private javax.swing.JTextField inputC;
+    private javax.swing.JTextField inputF;
+    private javax.swing.JTextField inputK;
+    private javax.swing.JSlider slider;
     // End of variables declaration//GEN-END:variables
 }
