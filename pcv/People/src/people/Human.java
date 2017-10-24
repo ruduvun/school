@@ -5,6 +5,8 @@
  */
 package people;
 
+import java.awt.Color;
+
 /**
  * Třída Human
  * 
@@ -19,7 +21,12 @@ public class Human {
     private int age = 20;
     private int weight = 70;
     private float height = (float) 1.80;
-    private Sex sex = Sex.MAN;    
+    private Sex sex = Sex.MAN;
+    
+    /* Modifikátor zabraňuje veřejnému přístupu k atributu, ale ten je
+     * přístupný pro všechny potomky třídy Human */
+    protected Color eyes = Color.BLUE;
+    
     
     /* Metody třídy Human */
     // Konstruktor třídy Human
@@ -79,11 +86,12 @@ public class Human {
         return Math.round(this.weight / Math.pow(this.height,2)*100.0)/100.0;
     }
     
+    @Override
     public String toString(){
-        String output = "My name is "+ this.name + ".\n";
-        output += "I'm "+ this.getAge() +" years old.\n";
-        output += "My height is "+ this.getHeight()+" m and my weight is "+this.getWeight()+" kg.\n";
-        output += "BMI: "+getBMI();
+        String output = this.name + " [Human]";
+        /*output += "I'm "+ this.getAge() +" years old.\n";
+        output += "My height is "+ this.getHeight()+"m and my weight is "+this.getWeight()+" kg.\n";
+        output += "BMI: "+getBMI()+"\n";*/
         return output;
     }
 }
