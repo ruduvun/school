@@ -1,0 +1,5 @@
+class;name;age;height;weight;sex
+Human;Ignác;20;1.8;70;MAN
+Sportsman;Franta;20;1.8;70;MAN
+Sportsman;Iksde;20;1.8;70;MAN
+Human;Haha;20;1.8;70;MAN
