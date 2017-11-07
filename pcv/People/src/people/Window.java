@@ -208,7 +208,7 @@ public class Window extends javax.swing.JFrame {
                 if(i > 0){
                     String[] attr = s.split(";");
                     Human clovek;
-                    if(attr[0] == "Sportsman"){
+                    if(attr[0].equalsIgnoreCase("SPORTSMAN")){
                         clovek = new Sportsman(attr[1]);
                         clovek.setAge(Integer.parseInt(attr[2]));
                         clovek.setHeight(Float.parseFloat(attr[3]));
@@ -222,7 +222,12 @@ public class Window extends javax.swing.JFrame {
                         clovek.setWeight(Integer.parseInt(attr[4]));
                         model.addElement(clovek);
                     }
-                    
+                    if(attr[5] == "MAN"){
+                        clovek.setSex(Human.Sex.MAN);
+                    }
+                    else{
+                        clovek.setSex(Human.Sex.WOMAN);
+                    }
                     System.out.println(s);
                 }
                 i++;
