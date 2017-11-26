@@ -1,0 +1,4 @@
+class;firstname;surname;sex;telnumber;address;zip
+officeworker;Pan;Úředník;Muž;456789132;Praskova 5 Opava;564 89
+repairman;Pan;Údržbář;Muž;566788655;Na Rohu 5 Opava;564 87
+cleaner;Paní;Uklízečková;Žena;546123895;Opavská 5 Opava;415 75
