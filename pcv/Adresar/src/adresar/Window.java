@@ -5,14 +5,10 @@
  */
 package adresar;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-import javax.swing.DefaultListModel;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Radovan
  */
 public class Window extends javax.swing.JFrame {
-    String[] columns = {"Jméno","Přijmení","Pohlaví","Tel. číslo","Adresa","PSČ"};
+    String[] columns = {"Jméno","Přijmení","Pohlaví","Tel. číslo","Adresa","Město","PSČ"};
     DefaultTableModel model_officeworker = new DefaultTableModel(columns, 0);
     DefaultTableModel model_repairman = new DefaultTableModel(columns, 0);
     DefaultTableModel model_cleaner = new DefaultTableModel(columns, 0);
@@ -45,17 +41,36 @@ public class Window extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popupMenu = new javax.swing.JPopupMenu();
+        editMenu = new javax.swing.JMenuItem();
+        removeMenu = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         addButt = new javax.swing.JButton();
         saveButt = new javax.swing.JButton();
         loadButt = new javax.swing.JButton();
-        jTabbedPane4 = new javax.swing.JTabbedPane();
+        zalozky = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         officeWorkerTable = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         repairmanTable = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         cleanerTable = new javax.swing.JTable();
+
+        editMenu.setText("Editovat...");
+        editMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editMenuActionPerformed(evt);
+            }
+        });
+        popupMenu.add(editMenu);
+
+        removeMenu.setText("Odstranit vybrané");
+        removeMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeMenuActionPerformed(evt);
+            }
+        });
+        popupMenu.add(removeMenu);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Adresář firmy");
@@ -116,9 +131,10 @@ public class Window extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        officeWorkerTable.setComponentPopupMenu(popupMenu);
         jScrollPane1.setViewportView(officeWorkerTable);
 
-        jTabbedPane4.addTab("Úředníci", jScrollPane1);
+        zalozky.addTab("Úředníci", jScrollPane1);
 
         repairmanTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -147,9 +163,10 @@ public class Window extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        repairmanTable.setComponentPopupMenu(popupMenu);
         jScrollPane3.setViewportView(repairmanTable);
 
-        jTabbedPane4.addTab("Údržbáři", jScrollPane3);
+        zalozky.addTab("Údržbáři", jScrollPane3);
 
         cleanerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -178,9 +195,10 @@ public class Window extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        cleanerTable.setComponentPopupMenu(popupMenu);
         jScrollPane4.setViewportView(cleanerTable);
 
-        jTabbedPane4.addTab("Uklízeči", jScrollPane4);
+        zalozky.addTab("Uklízeči", jScrollPane4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,7 +211,7 @@ public class Window extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPane4)
+                    .addComponent(zalozky)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(addButt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 437, Short.MAX_VALUE)
@@ -213,7 +231,7 @@ public class Window extends javax.swing.JFrame {
                     .addComponent(loadButt)
                     .addComponent(addButt))
                 .addGap(53, 53, 53)
-                .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(zalozky, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -236,13 +254,13 @@ public class Window extends javax.swing.JFrame {
                 }
                 vyber = dialog.getClassname();
             if("urednici".equals(vyber)){
-                model_officeworker.addRow(new Object[]{vytvoreny.getFirstName(),vytvoreny.getSurname(),pohlavi,vytvoreny.getTelnumber(),vytvoreny.getAddress(),vytvoreny.getZip()});
+                model_officeworker.addRow(new Object[]{vytvoreny.getFirstName(),vytvoreny.getSurname(),pohlavi,vytvoreny.getTelnumber(),vytvoreny.getAddress(),vytvoreny.getCity(),vytvoreny.getZip()});
             }
             else if("udrzbari".equals(vyber)){
-                model_repairman.addRow(new Object[]{vytvoreny.getFirstName(),vytvoreny.getSurname(),pohlavi,vytvoreny.getTelnumber(),vytvoreny.getAddress(),vytvoreny.getZip()});
+                model_repairman.addRow(new Object[]{vytvoreny.getFirstName(),vytvoreny.getSurname(),pohlavi,vytvoreny.getTelnumber(),vytvoreny.getAddress(),vytvoreny.getCity(),vytvoreny.getZip()});
             }
             else{
-                model_cleaner.addRow(new Object[]{vytvoreny.getFirstName(),vytvoreny.getSurname(),pohlavi,vytvoreny.getTelnumber(),vytvoreny.getAddress(),vytvoreny.getZip()});
+                model_cleaner.addRow(new Object[]{vytvoreny.getFirstName(),vytvoreny.getSurname(),pohlavi,vytvoreny.getTelnumber(),vytvoreny.getAddress(),vytvoreny.getCity(),vytvoreny.getZip()});
             }
             //}
         //});
@@ -252,14 +270,14 @@ public class Window extends javax.swing.JFrame {
     private void saveButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtActionPerformed
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("adresar.txt"))){
-            bw.write("class;firstname;surname;sex;telnumber;address;zip");
+            bw.write("class;firstname;surname;sex;telnumber;address;city;zip");
             
             for (int i = 0; i < model_officeworker.getRowCount();i++){
                 bw.newLine();
                 bw.write("officeworker;");
                 for(int j = 0; j < model_officeworker.getColumnCount();j++){
                     bw.write(model_officeworker.getValueAt(i, j).toString());
-                    if(j != 5)
+                    if(j != model_cleaner.getColumnCount() - 1)
                         bw.write(";");
                 }
             }
@@ -268,7 +286,7 @@ public class Window extends javax.swing.JFrame {
                 bw.write("repairman;");
                 for(int j = 0; j < model_repairman.getColumnCount();j++){
                     bw.write(model_repairman.getValueAt(i, j).toString());
-                    if(j != 5)
+                    if(j != model_cleaner.getColumnCount() - 1)
                         bw.write(";");
                 }
             }
@@ -277,7 +295,7 @@ public class Window extends javax.swing.JFrame {
                 bw.write("cleaner;");
                 for(int j = 0; j < model_cleaner.getColumnCount();j++){
                     bw.write(model_cleaner.getValueAt(i, j).toString());
-                    if(j != 5)
+                    if(j != model_cleaner.getColumnCount() - 1)
                         bw.write(";");
                 }
             }
@@ -312,24 +330,27 @@ public class Window extends javax.swing.JFrame {
                         pohlavi = attr[3];
                         pracovnik.setTelnumber(Integer.parseInt(attr[4]));
                         pracovnik.setAddress(attr[5]);
-                        pracovnik.setZip(attr[6]);
-                        model_officeworker.addRow(new Object[]{pracovnik.getFirstName(),pracovnik.getSurname(),pohlavi,pracovnik.getTelnumber(),pracovnik.getAddress(),pracovnik.getZip()});
+                        pracovnik.setCity(attr[6]);
+                        pracovnik.setZip(attr[7]);
+                        model_officeworker.addRow(new Object[]{pracovnik.getFirstName(),pracovnik.getSurname(),pohlavi,pracovnik.getTelnumber(),pracovnik.getAddress(),pracovnik.getCity(),pracovnik.getZip()});
                     }
                     else if(attr[0].equals("repairman")){
                         pracovnik = new Worker(attr[1],attr[2]);
                         pohlavi = attr[3];
                         pracovnik.setTelnumber(Integer.parseInt(attr[4]));
                         pracovnik.setAddress(attr[5]);
-                        pracovnik.setZip(attr[6]);
-                        model_repairman.addRow(new Object[]{pracovnik.getFirstName(),pracovnik.getSurname(),pohlavi,pracovnik.getTelnumber(),pracovnik.getAddress(),pracovnik.getZip()});
+                        pracovnik.setCity(attr[6]);
+                        pracovnik.setZip(attr[7]);
+                        model_repairman.addRow(new Object[]{pracovnik.getFirstName(),pracovnik.getSurname(),pohlavi,pracovnik.getTelnumber(),pracovnik.getAddress(),pracovnik.getCity(),pracovnik.getZip()});
                     }
                     else if(attr[0].equals("cleaner")){
                         pracovnik = new Worker(attr[1],attr[2]);
                         pohlavi = attr[3];
                         pracovnik.setTelnumber(Integer.parseInt(attr[4]));
                         pracovnik.setAddress(attr[5]);
-                        pracovnik.setZip(attr[6]);
-                        model_cleaner.addRow(new Object[]{pracovnik.getFirstName(),pracovnik.getSurname(),pohlavi,pracovnik.getTelnumber(),pracovnik.getAddress(),pracovnik.getZip()});
+                        pracovnik.setCity(attr[6]);
+                        pracovnik.setZip(attr[7]);
+                        model_cleaner.addRow(new Object[]{pracovnik.getFirstName(),pracovnik.getSurname(),pohlavi,pracovnik.getTelnumber(),pracovnik.getAddress(),pracovnik.getCity(),pracovnik.getZip()});
                     }
                 }
                 i++;
@@ -340,6 +361,111 @@ public class Window extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loadButtActionPerformed
 
+    private void editMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMenuActionPerformed
+        String recordvalues = "";
+        String pohlavi;
+        if(zalozky.getTitleAt(zalozky.getSelectedIndex()).equals("Úředníci") && officeWorkerTable.getSelectedRow() > -1){
+            String type = "urednik";
+            final int selectedRowIndex = officeWorkerTable.getSelectedRow();
+            Worker pracovnik = new Worker();
+            pracovnik.setFirstName(recordvalues + (String.valueOf(model_officeworker.getValueAt(selectedRowIndex,0))));         
+            pracovnik.setSurname(recordvalues + (String.valueOf(model_officeworker.getValueAt(selectedRowIndex,1))));
+            if((recordvalues + (String.valueOf(model_officeworker.getValueAt(selectedRowIndex,2)))).equals("Muž")){
+                pracovnik.setSex(Worker.Sex.MAN);
+                pohlavi = "Muž";
+            }
+            else{
+                pracovnik.setSex(Worker.Sex.WOMAN);
+                pohlavi = "Žena";
+            }
+            
+            pracovnik.setTelnumber((int)model_officeworker.getValueAt(selectedRowIndex,3));
+            pracovnik.setAddress(recordvalues + (String.valueOf(model_officeworker.getValueAt(selectedRowIndex,4))));
+            pracovnik.setCity(recordvalues + (String.valueOf(model_officeworker.getValueAt(selectedRowIndex,5))));
+            pracovnik.setZip(recordvalues + (String.valueOf(model_officeworker.getValueAt(selectedRowIndex,6))));
+            addDialog dialog = new addDialog(this,true,pracovnik,type);
+            officeWorkerTable.setModel(model_officeworker);
+        }
+        else if(zalozky.getTitleAt(zalozky.getSelectedIndex()).equals("Údržbáři") && repairmanTable.getSelectedRow() > -1){
+            String type = "udrzbar";            
+            final int selectedRowIndex = repairmanTable.getSelectedRow();
+            Worker pracovnik = new Worker();
+            String pomocna = String.valueOf(model_repairman.getValueAt(selectedRowIndex, 0));
+            pracovnik.setFirstName(recordvalues + (String.valueOf(model_repairman.getValueAt(selectedRowIndex,0))));
+            
+            pracovnik.setSurname(recordvalues + (String.valueOf(model_repairman.getValueAt(selectedRowIndex,1))));
+            if(recordvalues + (String.valueOf(model_repairman.getValueAt(selectedRowIndex,2))) == "Muž"){
+                pracovnik.setSex(Worker.Sex.MAN);
+                pohlavi = "Muž";
+            }
+            else{
+                pracovnik.setSex(Worker.Sex.WOMAN);
+                pohlavi = "Žena";
+            }
+            
+            pracovnik.setTelnumber((int)model_repairman.getValueAt(selectedRowIndex,3));
+            pracovnik.setAddress(recordvalues + (String.valueOf(model_repairman.getValueAt(selectedRowIndex,4))));
+            pracovnik.setCity(recordvalues + (String.valueOf(model_repairman.getValueAt(selectedRowIndex,5))));
+            pracovnik.setZip(recordvalues + (String.valueOf(model_repairman.getValueAt(selectedRowIndex,6))));
+            addDialog dialog = new addDialog(this,true,pracovnik,type);
+        }
+        else{
+            String type = "uklizec";
+            final int selectedRowIndex = cleanerTable.getSelectedRow();
+            Worker pracovnik = new Worker();
+            String pomocna = String.valueOf(model_cleaner.getValueAt(selectedRowIndex, 0));
+            pracovnik.setFirstName(recordvalues + (String.valueOf(model_cleaner.getValueAt(selectedRowIndex,0))));
+            
+            pracovnik.setSurname(recordvalues + (String.valueOf(model_cleaner.getValueAt(selectedRowIndex,1))));
+            if(recordvalues + (String.valueOf(model_cleaner.getValueAt(selectedRowIndex,2))) == "Muž"){
+                pracovnik.setSex(Worker.Sex.MAN);
+                pohlavi = "Muž";
+            }
+            else{
+                pracovnik.setSex(Worker.Sex.WOMAN);
+                pohlavi = "Žena";
+            }
+            
+            pracovnik.setTelnumber((int)model_cleaner.getValueAt(selectedRowIndex,3));
+            pracovnik.setAddress(recordvalues + (String.valueOf(model_cleaner.getValueAt(selectedRowIndex,4))));
+            pracovnik.setCity(recordvalues + (String.valueOf(model_cleaner.getValueAt(selectedRowIndex,5))));
+            pracovnik.setZip(recordvalues + (String.valueOf(model_cleaner.getValueAt(selectedRowIndex,6))));
+            addDialog dialog = new addDialog(this,true,pracovnik,type);
+            
+        }
+    }//GEN-LAST:event_editMenuActionPerformed
+
+    private void removeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeMenuActionPerformed
+        if(zalozky.getTitleAt(zalozky.getSelectedIndex()).equals("Úředníci")){
+            int[] rows = officeWorkerTable.getSelectedRows();
+            for(int i=0;i<rows.length;i++){
+                model_officeworker.removeRow(rows[i]-i);
+            }
+        }
+        else if(zalozky.getTitleAt(zalozky.getSelectedIndex()).equals("Údržbáři")){
+            int[] rows = repairmanTable.getSelectedRows();
+            for(int i=0;i<rows.length;i++){
+                model_repairman.removeRow(rows[i]-i);
+            }
+        }
+        else{
+            int[] rows = cleanerTable.getSelectedRows();
+            for(int i=0;i<rows.length;i++){
+                model_cleaner.removeRow(rows[i]-i);
+            }
+        }
+    }//GEN-LAST:event_removeMenuActionPerformed
+    
+    public void setTable(Worker pracovnik, String pohlavi,int selectedRowIndex){
+        model_officeworker.setValueAt(pracovnik.getFirstName(),selectedRowIndex,0);
+        model_officeworker.setValueAt(pracovnik.getSurname(),selectedRowIndex,1);
+        model_officeworker.setValueAt(pracovnik.getFirstName(),selectedRowIndex,2);
+        model_officeworker.setValueAt(pohlavi, selectedRowIndex,3);
+        model_officeworker.setValueAt(pracovnik.getTelnumber(), selectedRowIndex,4);
+        model_officeworker.setValueAt(pracovnik.getAddress(), selectedRowIndex,5);
+        model_officeworker.setValueAt(pracovnik.getCity(), selectedRowIndex,6);
+        model_officeworker.setValueAt(pracovnik.getZip(), selectedRowIndex,7);
+    }
     /**
      * @param args the command line arguments
      */
@@ -378,14 +504,17 @@ public class Window extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButt;
     private javax.swing.JTable cleanerTable;
+    private javax.swing.JMenuItem editMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JButton loadButt;
     private javax.swing.JTable officeWorkerTable;
+    private javax.swing.JPopupMenu popupMenu;
+    private javax.swing.JMenuItem removeMenu;
     private javax.swing.JTable repairmanTable;
     private javax.swing.JButton saveButt;
+    private javax.swing.JTabbedPane zalozky;
     // End of variables declaration//GEN-END:variables
 }

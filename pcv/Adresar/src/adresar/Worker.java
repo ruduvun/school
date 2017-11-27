@@ -10,6 +10,8 @@ package adresar;
  * @author Radovan
  */
 public class Worker {
+
+    
     public enum Sex{
         MAN, WOMAN
     }
@@ -20,6 +22,7 @@ public class Worker {
     private int telnumber = 777666555;
     private String address = "Opavská 5 Opava";
     private String zip = "746 01";
+    private String city = "Opava";
     
     public Worker (){
         
@@ -69,6 +72,10 @@ public class Worker {
     public Sex getSex() {
         return sex;
     }
+
+    public String getCity() {
+        return city;
+    }
     
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -96,6 +103,10 @@ public class Worker {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
     
     public String ToString(){
