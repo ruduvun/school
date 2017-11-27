@@ -5,18 +5,20 @@
  */
 package projekt;
 
-import javax.swing.JFrame;
+import java.awt.BorderLayout;
 
 /**
  *
  * @author Radovan
  */
 public class Window extends javax.swing.JFrame {
-    private int clicks = 0;
+    
     
     public Window() {
-        initComponents();
+        
+        initComponents();  
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,150 +29,23 @@ public class Window extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        clickCount = new javax.swing.JLabel();
-        saveButt = new javax.swing.JButton();
-        loadButt = new javax.swing.JButton();
-        jProgressBar1 = new javax.swing.JProgressBar();
-        butt1 = new javax.swing.JButton();
-        butt2 = new javax.swing.JButton();
-        butt3 = new javax.swing.JButton();
-        clickButt = new javax.swing.JButton();
-        butt6 = new javax.swing.JButton();
-        butt5 = new javax.swing.JButton();
-        butt4 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clicker Game");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Clicker Game");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Počet kliknutí:");
-
-        clickCount.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        clickCount.setText("0");
-
-        saveButt.setText("Uložit postup");
-
-        loadButt.setText("Načíst postup");
-
-        jProgressBar1.setToolTipText("Cíl: 10 000 kliknutí");
-
-        butt1.setText("Ubuntu zařízení na klikání (+1 klik/sekundu)");
-        butt1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                butt1ActionPerformed(evt);
-            }
-        });
-
-        butt2.setText("Profesionální Cookie Clicker hráč (+5)");
-
-        butt3.setText("Skupina IT klikačů (+10)");
-
-        clickButt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        clickButt.setText("CLICK!");
-        clickButt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clickButtActionPerformed(evt);
-            }
-        });
-
-        butt6.setText("Tlačítko (+150)");
-
-        butt5.setText("Tlačítko (+70)");
-
-        butt4.setText("Skript na klikání (+30)");
-
-        jLabel3.setText("Cíl: 10 000 kliknutí");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addComponent(clickButt, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(106, 106, 106)
-                        .addComponent(clickCount)
-                        .addGap(143, 143, 143)
-                        .addComponent(saveButt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
-                        .addComponent(loadButt)
-                        .addGap(24, 24, 24))
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(butt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(butt3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(butt2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(butt5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(butt4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(butt6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(88, 88, 88))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(293, 293, 293))
+            .addGap(0, 667, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(clickCount)
-                    .addComponent(saveButt)
-                    .addComponent(loadButt))
-                .addGap(4, 4, 4)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(butt4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(butt1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(butt2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(butt5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(butt6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(butt3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(clickButt, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 410, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void butt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butt1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_butt1ActionPerformed
-
-    private void clickButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickButtActionPerformed
-        clicks++;
-        clickCount.setText(String.valueOf(clicks));
-    }//GEN-LAST:event_clickButtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,6 +56,10 @@ public class Window extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        Window window = new Window();
+        WinPanel hra = new WinPanel();
+        window.setLayout(new BorderLayout());
+        window.add(hra, BorderLayout.CENTER);
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -191,33 +70,28 @@ public class Window extends javax.swing.JFrame {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Window.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
                 new Window().setVisible(true);
+                
             }
         });
+        //</editor-fold>
+        /*int clicks = 0;
+        int clickIncome = 0;
+        Click klik = new Click(clicks, clickIncome);*/
+        //</editor-fold>
+
+        /* Create and display the form */
+        
+        
+        
+        
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton butt1;
-    private javax.swing.JButton butt2;
-    private javax.swing.JButton butt3;
-    private javax.swing.JButton butt4;
-    private javax.swing.JButton butt5;
-    private javax.swing.JButton butt6;
-    private javax.swing.JButton clickButt;
-    private javax.swing.JLabel clickCount;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JButton loadButt;
-    private javax.swing.JButton saveButt;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -1,7 +1,0 @@
-﻿class;firstname;surname;sex;telnumber;address;city;zip
-officeworker;Pan;Úředník;Muž;444666888;Na Rohu 5;Opava;555 66;
-officeworker;Paní;Úředníková;Žena;888666777;Na Rohu 5;Opava;555 66;
-repairman;Pan;Údržbář;Muž;444666222;Praskova 99;Opava;555 66;
-repairman;Druhý;Údržbář;Muž;555666555;Opavská 65;Opava;456 78;
-cleaner;Paní;Čističová;Žena;777999888;Hlavní 8;Chlebičov;700 00;
-cleaner;Druhá;Uklízečka;Žena;333555666;Těšínská 52;Opava;701 00;

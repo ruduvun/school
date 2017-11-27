@@ -11,14 +11,19 @@ package projekt;
  */
 public class Click extends Window {
     private int clicks = 0;
-    private int clickIncome = 0;
+    //private int clickIncome = 0;
     
-    public Click (int clicks, int clickIncome){
+    public Click (int clicks){
+        clicks = this.clicks;
+        //clickIncome = this.clickIncome;
+    }
+    
+    public int getClicks (){
+        return clicks;
+    }
+    
+    public void setClicks(int clicks){
         this.clicks = clicks;
-        this.clickIncome = clickIncome;
     }
     
-    private void onClick(){
-        
-    }
 }
