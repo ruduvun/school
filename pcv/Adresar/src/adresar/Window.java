@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Radovan
  */
 public class Window extends javax.swing.JFrame {
-    String[] columns = {"Jméno","Přijmení","Pohlaví","Tel. číslo","Adresa","PSČ"};
+    String[] columns = {"Jméno","Přijmení","Pohlaví","Tel. číslo","Adresa","Město","PSČ"};
     DefaultTableModel model_officeworker = new DefaultTableModel(columns, 0);
     DefaultTableModel model_repairman = new DefaultTableModel(columns, 0);
     DefaultTableModel model_cleaner = new DefaultTableModel(columns, 0);
@@ -32,6 +32,7 @@ public class Window extends javax.swing.JFrame {
     public Window() {    
         initComponents();
         officeWorkerTable.setModel(model_officeworker);
+        
         repairmanTable.setModel(model_repairman);
         cleanerTable.setModel(model_cleaner);
     }
@@ -45,6 +46,9 @@ public class Window extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popupMenu = new javax.swing.JPopupMenu();
+        removeMenu = new javax.swing.JMenuItem();
+        editMenu = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         addButt = new javax.swing.JButton();
         saveButt = new javax.swing.JButton();
@@ -56,6 +60,22 @@ public class Window extends javax.swing.JFrame {
         repairmanTable = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         cleanerTable = new javax.swing.JTable();
+
+        removeMenu.setText("Odstranit vybraný");
+        removeMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeMenuActionPerformed(evt);
+            }
+        });
+        popupMenu.add(removeMenu);
+
+        editMenu.setText("Editovat...");
+        editMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editMenuActionPerformed(evt);
+            }
+        });
+        popupMenu.add(editMenu);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Adresář firmy");
@@ -116,6 +136,7 @@ public class Window extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        officeWorkerTable.setComponentPopupMenu(popupMenu);
         jScrollPane1.setViewportView(officeWorkerTable);
 
         jTabbedPane4.addTab("Úředníci", jScrollPane1);
@@ -147,6 +168,7 @@ public class Window extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        repairmanTable.setComponentPopupMenu(popupMenu);
         jScrollPane3.setViewportView(repairmanTable);
 
         jTabbedPane4.addTab("Údržbáři", jScrollPane3);
@@ -178,6 +200,7 @@ public class Window extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        cleanerTable.setComponentPopupMenu(popupMenu);
         jScrollPane4.setViewportView(cleanerTable);
 
         jTabbedPane4.addTab("Uklízeči", jScrollPane4);
@@ -236,13 +259,13 @@ public class Window extends javax.swing.JFrame {
                 }
                 vyber = dialog.getClassname();
             if("urednici".equals(vyber)){
-                model_officeworker.addRow(new Object[]{vytvoreny.getFirstName(),vytvoreny.getSurname(),pohlavi,vytvoreny.getTelnumber(),vytvoreny.getAddress(),vytvoreny.getZip()});
+                model_officeworker.addRow(new Object[]{vytvoreny.getFirstName(),vytvoreny.getSurname(),pohlavi,vytvoreny.getTelnumber(),vytvoreny.getAddress(),vytvoreny.getCity(),vytvoreny.getZip()});
             }
             else if("udrzbari".equals(vyber)){
-                model_repairman.addRow(new Object[]{vytvoreny.getFirstName(),vytvoreny.getSurname(),pohlavi,vytvoreny.getTelnumber(),vytvoreny.getAddress(),vytvoreny.getZip()});
+                model_repairman.addRow(new Object[]{vytvoreny.getFirstName(),vytvoreny.getSurname(),pohlavi,vytvoreny.getTelnumber(),vytvoreny.getAddress(),vytvoreny.getCity(),vytvoreny.getZip()});
             }
             else{
-                model_cleaner.addRow(new Object[]{vytvoreny.getFirstName(),vytvoreny.getSurname(),pohlavi,vytvoreny.getTelnumber(),vytvoreny.getAddress(),vytvoreny.getZip()});
+                model_cleaner.addRow(new Object[]{vytvoreny.getFirstName(),vytvoreny.getSurname(),pohlavi,vytvoreny.getTelnumber(),vytvoreny.getAddress(),vytvoreny.getCity(),vytvoreny.getZip()});
             }
             //}
         //});
@@ -252,7 +275,7 @@ public class Window extends javax.swing.JFrame {
     private void saveButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtActionPerformed
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("adresar.txt"))){
-            bw.write("class;firstname;surname;sex;telnumber;address;zip");
+            bw.write("class;firstname;surname;sex;telnumber;address;city;zip");
             
             for (int i = 0; i < model_officeworker.getRowCount();i++){
                 bw.newLine();
@@ -340,6 +363,19 @@ public class Window extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loadButtActionPerformed
 
+    private void removeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removeMenuActionPerformed
+
+    private void editMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMenuActionPerformed
+        /*if (officeWorkerTable.getSelectedRow() > -1){
+            Worker pracovnik = (Worker) model.get(peopleList.getSelectedIndex());
+            addDialog dialog = new addDialog(this,true,pracovnik);
+            model.setElementAt(dialog.getPerson(), peopleList.getSelectedIndex());
+            
+        }*/
+    }//GEN-LAST:event_editMenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -378,6 +414,7 @@ public class Window extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButt;
     private javax.swing.JTable cleanerTable;
+    private javax.swing.JMenuItem editMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
@@ -385,6 +422,8 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JButton loadButt;
     private javax.swing.JTable officeWorkerTable;
+    private javax.swing.JPopupMenu popupMenu;
+    private javax.swing.JMenuItem removeMenu;
     private javax.swing.JTable repairmanTable;
     private javax.swing.JButton saveButt;
     // End of variables declaration//GEN-END:variables

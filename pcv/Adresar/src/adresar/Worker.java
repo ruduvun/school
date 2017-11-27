@@ -18,8 +18,9 @@ public class Worker {
     private Sex sex;
     private int age = 25;
     private int telnumber = 777666555;
-    private String address = "Opavská 5 Opava";
+    private String address = "Opavská 5";
     private String zip = "746 01";
+    private String city = "Opava";
     
     public Worker (){
         
@@ -96,6 +97,14 @@ public class Worker {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
     
     public String ToString(){
